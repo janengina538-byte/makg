@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makueni Girls High School</title>
+<style>
+  :root{
+    --maroon: #6B1E23;
+    --maroon-dark: #4A1418;
+    --gold: #C99A2E;
+    --forest: #24402F;
+    --cream: #F7F2E7;
+    --charcoal: #2A2420;
+    --line: #E3D9C4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    line-height: 1.6;
+  }
+  h1,h2,h3{
+    font-family: 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+    color: var(--maroon-dark);
+    line-height: 1.2;
+  }
+  .sans{
+    font-family: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  a{color:inherit;}
+
+  /* NAV */
+  header{
+    position: sticky; top:0; z-index:100;
+    background: var(--maroon);
+    color: var(--cream);
+    padding: 0.9rem 1.5rem;
+    display:flex; align-items:center; justify-content:space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .brand{
+    display:flex; align-items:center; gap:0.7rem;
+    font-weight:bold; font-size:1.15rem; letter-spacing:0.02em;
+  }
+  .crest{
+    width:38px; height:38px; border-radius:50%;
+    background: var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--maroon-dark); font-weight:bold; font-size:1.1rem;
+    border: 2px solid var(--cream);
+    flex-shrink:0;
+  }
+  nav ul{
+    list-style:none; display:flex; gap:1.6rem;
+    font-family: -apple-system, sans-serif;
+    font-size:0.95rem;
+  }
+  nav a{ text-decoration:none; opacity:0.9; }
+  nav a:hover{ opacity:1; text-decoration:underline; text-underline-offset:4px; }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); font-size:1.6rem; cursor:pointer; }
+
+  /* HERO */
+  .hero{
+    background:
+      linear-gradient(180deg, rgba(74,20,24,0.82), rgba(36,64,47,0.75)),
+      repeating-linear-gradient(135deg, #7a2a2a 0 40px, #6B1E23 40px 80px);
+    color: var(--cream);
+    padding: 6rem 1.5rem 5rem;
+    text-align:center;
+  }
+  .hero .eyebrow{
+    font-family:-apple-system, sans-serif; letter-spacing:0.25em; text-transform:uppercase;
+    font-size:0.78rem; color: var(--gold); margin-bottom:1rem;
+  }
+  .hero h1{
+    color:#fff; font-size: clamp(2rem, 5vw, 3.4rem); max-width:850px; margin:0 auto 1.2rem;
+  }
+  .hero p{
+    max-width:600px; margin: 0 auto 2rem; font-size:1.1rem; color:#f1e8da;
+  }
+  .btn{
+    display:inline-block; background: var(--gold); color: var(--maroon-dark);
+    padding:0.8rem 1.8rem; border-radius:2px; text-decoration:none;
+    font-family:-apple-system, sans-serif; font-weight:600; letter-spacing:0.02em;
+    border: 1px solid var(--gold);
+    transition: all 0.2s ease;
+  }
+  .btn:hover{ background:transparent; color:var(--gold); }
+  .btn-outline{
+    background:transparent; color:#fff; border:1px solid rgba(255,255,255,0.6); margin-left:0.8rem;
+  }
+  .btn-outline:hover{ background:rgba(255,255,255,0.1); color:#fff; }
+
+  section{ padding: 4.5rem 1.5rem; max-width:1080px; margin:0 auto; }
+  .section-tag{
+    font-family:-apple-system, sans-serif; text-transform:uppercase; letter-spacing:0.2em;
+    font-size:0.75rem; color: var(--maroon); font-weight:bold; margin-bottom:0.6rem;
+  }
+  section h2{ font-size:2rem; margin-bottom:1.2rem; }
+  .divider{
+    width:60px; height:4px; background: var(--gold); margin: 0 0 2rem 0;
+  }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:3rem; align-items:start;
+  }
+  .stat-row{ display:flex; gap:2rem; margin-top:2rem; flex-wrap:wrap; }
+  .stat{ }
+  .stat strong{ display:block; font-size:1.8rem; color:var(--maroon); font-family: 'Palatino Linotype', serif; }
+  .stat span{ font-family:-apple-system, sans-serif; font-size:0.85rem; color:#5c5347; }
+
+  /* ACADEMICS / CARDS */
+  .alt-bg{ background: #fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .card-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:1.6rem; margin-top:1rem;
+  }
+  .card{
+    background: var(--cream); border:1px solid var(--line); padding:1.8rem;
+    border-top: 3px solid var(--forest);
+  }
+  .card h3{ font-size:1.15rem; margin-bottom:0.6rem; }
+  .card p{ font-size:0.95rem; color:#4a4238; }
+
+  /* SCHOOL LIFE */
+  .life-grid{
+    display:grid; grid-template-columns: repeat(2, 1fr); gap:1.5rem; margin-top:1.5rem;
+  }
+  .life-item{
+    padding:1.5rem; border-left:3px solid var(--gold); background:#fff;
+  }
+  .life-item h3{ font-size:1.05rem; }
+
+  /* ADMISSIONS */
+  .steps{ counter-reset: step; margin-top:1.5rem; }
+  .step{
+    display:flex; gap:1.2rem; padding:1.2rem 0; border-bottom:1px solid var(--line);
+  }
+  .step:last-child{ border-bottom:none; }
+  .step-num{
+    counter-increment: step;
+    font-family: 'Palatino Linotype', serif; font-size:1.4rem; color: var(--gold);
+    min-width:2rem;
+  }
+  .step-num::before{ content: counter(step, decimal-leading-zero); }
+
+  /* CONTACT */
+  .contact-wrap{
+    background: var(--forest); color:#eef2ee; padding: 4rem 1.5rem;
+  }
+  .contact-inner{ max-width:1080px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:3rem; }
+  .contact-inner h2{ color:#fff; }
+  .contact-inner .divider{ background: var(--gold); }
+  .info-line{ margin-bottom:1rem; font-family:-apple-system, sans-serif; font-size:0.95rem; }
+  .info-line b{ display:block; color: var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.2rem; }
+  form{ display:flex; flex-direction:column; gap:0.9rem; font-family:-apple-system, sans-serif; }
+  input, textarea{
+    padding:0.8rem; border:1px solid rgba(255,255,255,0.3); background:rgba(255,255,255,0.05);
+    color:#fff; font-family:inherit; font-size:0.95rem;
+  }
+  input::placeholder, textarea::placeholder{ color:rgba(255,255,255,0.5); }
+  textarea{ resize:vertical; min-height:100px; }
+
+  footer{
+    background: var(--maroon-dark); color: rgba(255,255,255,0.7);
+    text-align:center; padding:1.6rem; font-family:-apple-system, sans-serif; font-size:0.82rem;
+  }
+
+  @media (max-width: 800px){
+    nav ul{
+      position:fixed; top:64px; left:0; right:0; background: var(--maroon-dark);
+      flex-direction:column; padding:1.2rem 1.5rem; gap:1rem;
+      transform: translateY(-150%); transition: transform 0.25s ease;
+    }
+    nav ul.open{ transform: translateY(0); }
+    .nav-toggle{ display:block; }
+    .about-grid, .contact-inner{ grid-template-columns: 1fr; }
+    .card-grid{ grid-template-columns: 1fr; }
+    .life-grid{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="crest">MG</div>
+    Makueni Girls High School
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+  <nav>
+    <ul id="navList">
+      <li><a href="#about">About</a></li>
+      <li><a href="#academics">Academics</a></li>
+      <li><a href="#life">School Life</a></li>
+      <li><a href="#admissions">Admissions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" style="max-width:none;">
+  <div class="eyebrow">Wote &middot; Makueni County &middot; Kenya</div>
+  <h1>Educating the girl-child with discipline, excellence and purpose.</h1>
+  <p>A public boarding secondary school for girls, preparing confident young women for national examinations and for life beyond them.</p>
+  <a href="#admissions" class="btn">Apply for Admission</a>
+  <a href="#contact" class="btn btn-outline">Get in Touch</a>
+</section>
+
+<section id="about">
+  <div class="section-tag">About Us</div>
+  <h2>A home for learning and growth</h2>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div>
+      <p>Makueni Girls High School is a public, boarding secondary school dedicated entirely to the education of girls. Nestled in Makueni County in Kenya's Eastern region, the school has built a reputation for discipline, academic focus and character formation.</p>
+      <br>
+      <p>We believe education is a partnership between the school, parents and the wider community. Every learner who passes through our gates is given the structure, support and encouragement to discover her own potential &mdash; academically, socially and personally.</p>
+    </div>
+    <div>
+      <div class="stat-row">
+        <div class="stat"><strong>Girls Only</strong><span class="sans">Boarding institution</span></div>
+        <div class="stat"><strong>CBC / CBE</strong><span class="sans">Competency-based curriculum</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><strong>Est. Community</strong><span class="sans">Staff, students &amp; parents</span></div>
+        <div class="stat"><strong>Eastern Kenya</strong><span class="sans">Makueni County</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="alt-bg">
+<section id="academics">
+  <div class="section-tag">Academics</div>
+  <h2>Learning built for the future</h2>
+  <div class="divider"></div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Competency-Based Curriculum</h3>
+      <p>Our teaching aligns with Kenya's CBC/CBE framework, balancing core academic subjects with practical, skills-based learning.</p>
+    </div>
+    <div class="card">
+      <h3>Sciences &amp; Languages</h3>
+      <p>Strong foundations in mathematics, sciences, languages and humanities, taught by a dedicated and experienced teaching staff.</p>
+    </div>
+    <div class="card">
+      <h3>Mentorship &amp; Guidance</h3>
+      <p>Regular guidance and counselling sessions help every student build confidence, resilience and a sense of direction.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="life">
+  <div class="section-tag">School Life</div>
+  <h2>Beyond the classroom</h2>
+  <div class="divider"></div>
+  <div class="life-grid">
+    <div class="life-item">
+      <h3>Boarding Life</h3>
+      <p class="sans">A structured routine of study, rest and community living that builds independence and discipline.</p>
+    </div>
+    <div class="life-item">
+      <h3>Sports &amp; Games</h3>
+      <p class="sans">Athletics, ball games and inter-house competitions keep students active and build team spirit.</p>
+    </div>
+    <div class="life-item">
+      <h3>Clubs &amp; Societies</h3>
+      <p class="sans">Debate, drama, music and Christian Union give students room to explore talents outside academics.</p>
+    </div>
+    <div class="life-item">
+      <h3>Community &amp; Values</h3>
+      <p class="sans">A culture of respect, integrity and service, instilled through daily school life and leadership roles.</p>
+    </div>
+  </div>
+</section>
+
+<div class="alt-bg">
+<section id="admissions">
+  <div class="section-tag">Admissions</div>
+  <h2>How to join us</h2>
+  <div class="divider"></div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>Check Placement</h3>
+        <p class="sans">Confirm placement through the Ministry of Education's national school placement portal, or enquire directly with our administration.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>Submit Documents</h3>
+        <p class="sans">Bring your admission letter, birth certificate, KCPE/primary school results slip, and passport photos on reporting day.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num"></div>
+      <div>
+        <h3>Reporting &amp; Orientation</h3>
+        <p class="sans">New students report with the required boarding items and go through an orientation programme with staff and prefects.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="contact-wrap" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag" style="color:var(--gold);">Contact</div>
+      <h2>We'd love to hear from you</h2>
+      <div class="divider"></div>
+      <div class="info-line"><b>Location</b>Wote-Unoa Road, Makueni County, Kenya</div>
+      <div class="info-line"><b>Phone</b>+254 7 05000000 </div>
+      <div class="info-line"><b>Email</b>info@makuenigirls.ac.ke </div>
+      <div class="info-line"><b>Office Hours</b>Monday &ndash; Friday, 8:00 AM &ndash; 5:00 PM</div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert('Thank you! This is a demo form — connect it to an email service or backend to make it functional.');">
+      <input type="text" placeholder="Full name" required>
+      <input type="email" placeholder="Email address" required>
+      <textarea placeholder="Your message"></textarea>
+      <button type="submit" class="btn" style="border:none; cursor:pointer;">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Makueni Girls High School &middot; Makueni County, Kenya
+</footer>
+
+<script>
+  document.getElementById('navToggle').addEventListener('click', function(){
+    document.getElementById('navList').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
